@@ -16,7 +16,7 @@ impl COMMANDS {
             COMMANDS::VERSION => Regex::new(r"^version$").expect("Err!"),
             COMMANDS::TIME => Regex::new(r"^time$").expect("Err"),
             COMMANDS::EXIT => Regex::new(r"^exit$").expect("Err!"),
-            COMMANDS::EJZ => todo!(),
+            COMMANDS::EJZ => Regex::new(r"^ejz\?").expect("Err!"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -28,6 +28,8 @@ impl COMMANDS {
             return Some(COMMANDS::TIME);
         } else if COMMANDS::get_regex(COMMANDS::EXIT).is_match(command) {
             return Some(COMMANDS::EXIT);
+        } else if COMMANDS::get_regex(COMMANDS::EJZ).is_match(command) {
+            return Some(COMMANDS::EJZ)
         } else {
             return None;
         }
