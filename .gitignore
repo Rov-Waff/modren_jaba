@@ -26,3 +26,8 @@
 hs_err_pid*
 >>>>>>> branch 'master' of https://github.com/Reiz-L/Jaba.git
 /.metadata/
+
+
+# Added by cargo
+
+/target
