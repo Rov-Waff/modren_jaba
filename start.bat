@@ -1,1 +1,0 @@
-java -jar jaba1.0.2.jar 
