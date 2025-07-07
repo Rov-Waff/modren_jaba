@@ -11,7 +11,7 @@ pub enum COMMANDS {
 impl COMMANDS {
     fn get_regex(command: COMMANDS) -> Regex {
         match command {
-            COMMANDS::PRINT => Regex::new(r"[print\?]").expect("Err!"),
+            COMMANDS::PRINT => Regex::new(r"^print\?").expect("Err!"),
             COMMANDS::VERSION => Regex::new(r"^version$").expect("Err!"),
             COMMANDS::TIME => Regex::new(r"^time$").expect("Err"),
             COMMANDS::EXIT => Regex::new(r"^exit$").expect("Err!"),
