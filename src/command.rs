@@ -18,19 +18,16 @@ impl COMMANDS {
         }
     }
 
-    pub fn new(&self, command: String) -> Option<COMMANDS> {
+    pub fn new(command: String) -> Option<COMMANDS> {
         if COMMANDS::get_regex(COMMANDS::PRINT).is_match(&command) {
             return Some(COMMANDS::PRINT);
-        }
-        else if COMMANDS::get_regex(COMMANDS::VERSION).is_match(&command) {
+        } else if COMMANDS::get_regex(COMMANDS::VERSION).is_match(&command) {
             return Some(COMMANDS::VERSION);
-        }
-        else if COMMANDS::get_regex(COMMANDS::TIME).is_match(&command) {
+        } else if COMMANDS::get_regex(COMMANDS::TIME).is_match(&command) {
             return Some(COMMANDS::TIME);
-        }
-        else if COMMANDS::get_regex(COMMANDS::EXIT).is_match(&command) {
+        } else if COMMANDS::get_regex(COMMANDS::EXIT).is_match(&command) {
             return Some(COMMANDS::EXIT);
-        }else {
+        } else {
             return None;
         }
     }
