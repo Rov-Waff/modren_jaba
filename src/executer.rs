@@ -35,7 +35,7 @@ impl Executer {
                 std::process::exit(0);
             }
             COMMANDS::EJZ => {
-                println!("已将{}转换为二进制",self.command[4..].to_string());
+                println!("已将{}转换为二进制", self.command[4..].to_string());
                 print!("结果:");
                 let mut res = String::new();
                 for i in self.command[4..].chars() {
@@ -46,7 +46,8 @@ impl Executer {
                 println!("--------------------------------")
             }
             COMMANDS::HELP => {
-                webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/").expect("无法打开帮助文档！");
+                webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/")
+                    .expect("无法打开帮助文档！");
             }
         }
     }
