@@ -9,15 +9,6 @@ pub enum COMMANDS {
 }
 
 impl COMMANDS {
-    pub fn exec(&self) {
-        match self {
-            COMMANDS::PRINT => todo!(),
-            COMMANDS::VERSION => todo!(),
-            COMMANDS::TIME => todo!(),
-            COMMANDS::EXIT => todo!(),
-        }
-    }
-
     fn get_regex(command: COMMANDS) -> Regex {
         match command {
             COMMANDS::PRINT => Regex::new(r"[print\?]").expect("Err!"),
