@@ -31,6 +31,7 @@ impl Executer {
                 println!("当前时间:{}", Local::now().format("%Y-%m-%d %H:%M:%S"))
             }
             COMMANDS::EXIT => {
+                println!("jaba已退出");
                 std::process::exit(0);
             }
             COMMANDS::EJZ => {
