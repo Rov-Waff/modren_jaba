@@ -34,12 +34,15 @@ impl Executer {
                 std::process::exit(0);
             }
             COMMANDS::EJZ => {
+                println!("已将{}转换为二进制",self.command[4..].to_string());
+                print!("结果:");
                 let mut res = String::new();
                 for i in self.command[4..].chars() {
                     res.push_str(&format!("{:032b}", i as u32));
                     res.push_str(" ")
                 }
                 println!("{}", res);
+                println!("--------------------------------")
             }
         }
     }
