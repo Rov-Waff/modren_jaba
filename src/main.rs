@@ -1,4 +1,4 @@
-use std::io::{self, Write};
+use std::{fs::create_dir, io::{self, Write}};
 
 const VERSION:&str=env!("CARGO_PKG_VERSION");
 
@@ -13,7 +13,7 @@ fn main() {
         io::stdout().flush().expect("F");
         let mut command=String::new();
         std::io::stdin().read_line(&mut command).expect("F");
-        let command=command.trim();
+        let command:String=command.trim().to_string();
         
     }
 
