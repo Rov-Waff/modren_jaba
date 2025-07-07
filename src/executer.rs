@@ -45,6 +45,9 @@ impl Executer {
                 println!("{}", res);
                 println!("--------------------------------")
             }
+            COMMANDS::HELP => {
+                webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/").expect("无法打开帮助文档！");
+            }
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {

@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 chrono = "0.4.41" #哇当时真的写成Cirno了
 regex = "1.11.1"
+webbrowser = "1.0.5"
