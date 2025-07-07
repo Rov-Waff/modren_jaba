@@ -1,3 +1,5 @@
+use std::io::{self, Write};
+
 const VERSION:&str=env!("CARGO_PKG_VERSION");
 
 fn main() {
@@ -6,4 +8,13 @@ fn main() {
 ",VERSION
     );
     
+    loop{
+        print!(">>> ");
+        io::stdout().flush().expect("F");
+        let mut command=String::new();
+        std::io::stdin().read_line(&mut command).expect("F");
+        let command=command.trim();
+        
+    }
+
 }
