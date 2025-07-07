@@ -5,6 +5,7 @@ pub enum COMMANDS {
     PRINT,
     VERSION,
     TIME,
+    EJZ,
     EXIT,
 }
 
@@ -15,6 +16,7 @@ impl COMMANDS {
             COMMANDS::VERSION => Regex::new(r"^version$").expect("Err!"),
             COMMANDS::TIME => Regex::new(r"^time$").expect("Err"),
             COMMANDS::EXIT => Regex::new(r"^exit$").expect("Err!"),
+            COMMANDS::EJZ => todo!(),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
