@@ -22,7 +22,6 @@ fn main() {
                 continue;
             }
         };
-        let exe = Executer::new(command_type, &command);
-        exe.exec();
+        Executer::new(command_type, &command).exec();
     }
 }
