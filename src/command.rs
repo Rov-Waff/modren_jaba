@@ -8,6 +8,7 @@ pub enum COMMANDS {
     EJZ,
     EXIT,
     HELP,
+    INFO
 }
 
 impl COMMANDS {
@@ -19,23 +20,24 @@ impl COMMANDS {
             COMMANDS::EXIT => Regex::new(r"^exit$").expect("Err!"),
             COMMANDS::EJZ => Regex::new(r"^ejz\?").expect("Err!"),
             COMMANDS::HELP => Regex::new(r"^help$").expect("Err!"),
+            COMMANDS::INFO => Regex::new(r"^info\?$").expect("Err!"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
         if COMMANDS::get_regex(COMMANDS::PRINT).is_match(command) {
-            return Some(COMMANDS::PRINT);
+            Some(COMMANDS::PRINT)
         } else if COMMANDS::get_regex(COMMANDS::VERSION).is_match(command) {
-            return Some(COMMANDS::VERSION);
+            Some(COMMANDS::VERSION)
         } else if COMMANDS::get_regex(COMMANDS::TIME).is_match(command) {
-            return Some(COMMANDS::TIME);
+            Some(COMMANDS::TIME)
         } else if COMMANDS::get_regex(COMMANDS::EXIT).is_match(command) {
-            return Some(COMMANDS::EXIT);
+            Some(COMMANDS::EXIT)
         } else if COMMANDS::get_regex(COMMANDS::EJZ).is_match(command) {
-            return Some(COMMANDS::EJZ);
+            Some(COMMANDS::EJZ)
         } else if COMMANDS::get_regex(COMMANDS::HELP).is_match(&command) {
-            return Some(COMMANDS::HELP);
+            Some(COMMANDS::HELP)
         } else {
-            return None;
+            None
         }
     }
 }
