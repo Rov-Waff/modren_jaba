@@ -51,11 +51,19 @@ impl Executer {
                     .expect("无法打开帮助文档！");
             }
             COMMANDS::INFO => {
-                let app = Application::builder().application_id("modrenjaba.mb").build();
+                let app = Application::builder()
+                    .application_id("modrenjaba.mb")
+                    .build();
                 let command = self.command[5..].to_string();
-                app.connect_activate(move |app|{
-                    let lb=gtk4::Label::builder().label(&command).build();
-                    let window=ApplicationWindow::builder().application(app).default_width(300).default_height(150).child(&lb).title("Modren Jaba Message").build();
+                app.connect_activate(move |app| {
+                    let lb = gtk4::Label::builder().label(&command).build();
+                    let window = ApplicationWindow::builder()
+                        .application(app)
+                        .default_width(300)
+                        .default_height(150)
+                        .child(&lb)
+                        .title("Modren Jaba Message")
+                        .build();
                     window.present()
                 });
                 app.run();
