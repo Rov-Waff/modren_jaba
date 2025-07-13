@@ -32,3 +32,8 @@ $ cargo build --release
 help
 ```
 而Modren Jaba的文档存储在[该页面内](https://rov-waff.github.io/modren_jaba_docs/)，使用mdbook构建,如果你在Modren Jaba中输入以上的命令，将会打开该页面
+
+### 开源
+原作者未指定开源协议，但我询问过了，他已允许我添加开源协议，本仓库使用**MIT License**进行开源
+
+![许可](assets/license.png)
