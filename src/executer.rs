@@ -1,7 +1,9 @@
 use crate::command::COMMANDS;
 use chrono::Local;
-use gtk4::prelude::{ApplicationExt, ApplicationExtManual, GtkWindowExt};
-use gtk4::{Application, ApplicationWindow};
+use gtk4::gdk_pixbuf::Pixbuf;
+use gtk4::glib::BoolError;
+use gtk4::prelude::{ApplicationExt, ApplicationExtManual, GridExt, GtkWindowExt};
+use gtk4::{Application, ApplicationWindow, Grid, Image};
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub struct Executer {
@@ -64,7 +66,49 @@ impl Executer {
                         .child(&lb)
                         .title("Modren Jaba Message")
                         .build();
+
                     window.present()
+                });
+                app.run();
+            }
+            COMMANDS::ONUI => {
+                match gtk4::init() {
+                    Ok(..) => {
+                        println!("Successfully");
+                    }
+                    Err(..) => {
+                        println!("Err!");
+                        return;
+                    }
+                }
+                let app = Application::builder()
+                    .application_id("modrenjaba.ui")
+                    .build();
+                let banner = Image::builder()
+                    .file("src/resources/banner.png")
+                    .height_request(256)
+                    .width_request(138)
+                    .build();
+                let info = gtk4::Label::builder()
+                    .label(
+                        "Jaba 张浩扬与您同在\n当前Jaba版本:1.0.2\n如果只想关闭窗口就请右上角关闭",
+                    )
+                    .build();
+                let btn_info = gtk4::Button::builder().label("更多信息").build();
+                let btn_site = gtk4::Button::builder().label("打开官网").build();
+                let btn_close = gtk4::Button::builder().label("关闭Jaba").build();
+                let grid = Grid::builder().build();
+                grid.attach(&banner, 0, 0, 1, 1);
+                grid.attach(&info, 0, 1, 1, 1);
+                grid.attach(&btn_info, 0, 2, 1, 1);
+                grid.attach(&btn_site, 0, 3, 1, 1);
+                grid.attach(&btn_close, 0, 4, 1, 1);
+                app.connect_activate(move |app| {
+                    let window = ApplicationWindow::builder()
+                        .application(app)
+                        .child(&grid)
+                        .build();
+                    window.present();
                 });
                 app.run();
             }

@@ -9,6 +9,7 @@ pub enum COMMANDS {
     EXIT,
     HELP,
     INFO,
+    ONUI,
 }
 
 impl COMMANDS {
@@ -21,6 +22,7 @@ impl COMMANDS {
             COMMANDS::EJZ => Regex::new(r"^ejz\?").expect("Err!"),
             COMMANDS::HELP => Regex::new(r"^help$").expect("Err!"),
             COMMANDS::INFO => Regex::new(r"^info\?").expect("Err!"),
+            COMMANDS::ONUI => Regex::new(r"^OnUI$").expect("Err!"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -38,6 +40,8 @@ impl COMMANDS {
             Some(COMMANDS::HELP)
         } else if COMMANDS::get_regex(COMMANDS::INFO).is_match(&command) {
             Some(COMMANDS::INFO)
+        } else if COMMANDS::get_regex(COMMANDS::ONUI).is_match(&command) {
+            Some(COMMANDS::ONUI)
         } else {
             None
         }
