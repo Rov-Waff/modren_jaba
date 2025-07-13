@@ -1,8 +1,6 @@
 use crate::command::COMMANDS;
 use chrono::Local;
-use gtk4::gdk_pixbuf::Pixbuf;
-use gtk4::glib::BoolError;
-use gtk4::prelude::{ApplicationExt, ApplicationExtManual, GridExt, GtkWindowExt};
+use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
 use gtk4::{Application, ApplicationWindow, Grid, Image};
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -97,6 +95,18 @@ impl Executer {
                 let btn_info = gtk4::Button::builder().label("更多信息").build();
                 let btn_site = gtk4::Button::builder().label("打开官网").build();
                 let btn_close = gtk4::Button::builder().label("关闭Jaba").build();
+                btn_info.connect_clicked(|_|{
+                   Executer::new(COMMANDS::INFO,&String::from(format!("{}{}{}{}{}{}", "info?Jaba是jvav的改进版本，基于jvav\n从 2020 年 14 月 64 起的发行版更改了 张浩扬 Jaba 许可。\n", "新的适用于 张浩扬 Jaba SE 许可协议 与以前的 张浩扬 Jvav 许可有很大差异。\n 新许可允许某些免费使用（例如个人使用和开发使用），\n而根据以前的 张浩扬 Jvav 许可获得授权的其他使用可能会不再支持。 请在下载和使用此产品之前认真阅读条款。 可在此处查看常见问题解答。\n", "\n", "可以通过低成本的 Jaba SE 订阅 获得商业许可和技术支持。\n", "\n", "张浩扬 还在 jdk.Jaba.net 的开源 GPL 许可下提供了最新的 OpenBDK 发行版"))).exec();
+                });
+                btn_site.connect_clicked(|_|{
+                    match webbrowser::open("https://github.com/Rov-Waff/modren_jaba"){
+                        Ok(_)=>println!("已在浏览器中打开"),
+                        Err(_)=>println!("无法打开！")
+                    }
+                });
+                btn_close.connect_clicked(|_|{
+                   Executer::new(COMMANDS::EXIT,&String::from("exit")).exec();
+                });
                 let grid = Grid::builder().build();
                 grid.attach(&banner, 0, 0, 1, 1);
                 grid.attach(&info, 0, 1, 1, 1);
@@ -106,6 +116,7 @@ impl Executer {
                 app.connect_activate(move |app| {
                     let window = ApplicationWindow::builder()
                         .application(app)
+                        .title("Modren Jaba")
                         .child(&grid)
                         .build();
                     window.present();
