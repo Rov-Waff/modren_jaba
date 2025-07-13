@@ -11,9 +11,9 @@ fn main() {
     );
     loop {
         print!(">>> ");
-        io::stdout().flush().expect("F");
+        io::stdout().flush().expect("IO error");
         let mut command = String::new();
-        std::io::stdin().read_line(&mut command).expect("F");
+        io::stdin().read_line(&mut command).expect("IO error");
         let command: String = command.trim().to_string();
         let command_type = match COMMANDS::new(&command) {
             Some(s) => s,
