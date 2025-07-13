@@ -2,6 +2,7 @@
 name = "modren_jaba"
 version = "1.0.3"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 chrono = "0.4.41" #哇当时真的写成Cirno了
