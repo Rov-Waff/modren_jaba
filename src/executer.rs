@@ -47,8 +47,11 @@ impl Executer {
                 println!("--------------------------------")
             }
             COMMANDS::HELP => {
-                webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/")
-                    .expect("无法打开帮助文档！");
+                match webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/"){
+                    Ok(_)=>println!("已在浏览器打开"),
+                    Err(_)=>println!("无法打开！")
+                }
+                    
             }
             COMMANDS::INFO => {
                 let app = Application::builder()
