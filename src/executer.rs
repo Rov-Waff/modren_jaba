@@ -91,7 +91,7 @@ impl Executer {
                     .build();
                 let info = gtk4::Label::builder()
                     .label(
-                        "Jaba 张浩扬与您同在\n当前Jaba版本:1.0.2\n如果只想关闭窗口就请右上角关闭",
+                        format!("Jaba 张浩扬与您同在\n当前Jaba版本:{}\n如果只想关闭窗口就请右上角关闭",VERSION)
                     )
                     .build();
                 let btn_info = gtk4::Button::builder().label("更多信息").build();
