@@ -47,11 +47,10 @@ impl Executer {
                 println!("--------------------------------")
             }
             COMMANDS::HELP => {
-                match webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/"){
-                    Ok(_)=>println!("已在浏览器打开"),
-                    Err(_)=>println!("无法打开！")
+                match webbrowser::open("https://rov-waff.github.io/modren_jaba_docs/") {
+                    Ok(_) => println!("已在浏览器打开"),
+                    Err(_) => println!("无法打开！"),
                 }
-                    
             }
             COMMANDS::INFO => {
                 let app = Application::builder()
@@ -101,14 +100,14 @@ impl Executer {
                 btn_info.connect_clicked(|_|{
                    Executer::new(COMMANDS::INFO,&String::from(format!("{}{}{}{}{}{}", "info?Jaba是jvav的改进版本，基于jvav\n从 2020 年 14 月 64 起的发行版更改了 张浩扬 Jaba 许可。\n", "新的适用于 张浩扬 Jaba SE 许可协议 与以前的 张浩扬 Jvav 许可有很大差异。\n 新许可允许某些免费使用（例如个人使用和开发使用），\n而根据以前的 张浩扬 Jvav 许可获得授权的其他使用可能会不再支持。 请在下载和使用此产品之前认真阅读条款。 可在此处查看常见问题解答。\n", "\n", "可以通过低成本的 Jaba SE 订阅 获得商业许可和技术支持。\n", "\n", "张浩扬 还在 jdk.Jaba.net 的开源 GPL 许可下提供了最新的 OpenBDK 发行版"))).exec();
                 });
-                btn_site.connect_clicked(|_|{
-                    match webbrowser::open("https://github.com/Rov-Waff/modren_jaba"){
-                        Ok(_)=>println!("已在浏览器中打开"),
-                        Err(_)=>println!("无法打开！")
+                btn_site.connect_clicked(|_| {
+                    match webbrowser::open("https://github.com/Rov-Waff/modren_jaba") {
+                        Ok(_) => println!("已在浏览器中打开"),
+                        Err(_) => println!("无法打开！"),
                     }
                 });
-                btn_close.connect_clicked(|_|{
-                   Executer::new(COMMANDS::EXIT,&String::from("exit")).exec();
+                btn_close.connect_clicked(|_| {
+                    Executer::new(COMMANDS::EXIT, &String::from("exit")).exec();
                 });
                 let grid = Grid::builder().build();
                 grid.attach(&banner, 0, 0, 1, 1);
