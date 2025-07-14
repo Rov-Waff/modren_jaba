@@ -1,7 +1,6 @@
 use crate::command::COMMANDS;
 use chrono::Local;
 use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
-use gtk4::{Application, ApplicationWindow, Grid, Image};
 
 mod info_window;
 mod main_window;
