@@ -1,6 +1,7 @@
 use std::io::{self, Write};
 
-use modren_jaba::{command::COMMANDS, executer::Executer};
+use modren_jaba::executer::Executer;
+use modren_jaba::command::COMMANDS;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
