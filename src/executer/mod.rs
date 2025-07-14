@@ -112,7 +112,29 @@ impl Executer {
                     }
                 }
             }
-            COMMANDS::IdeOpensFile => {}
+            COMMANDS::IdeOpensFile => {
+                match OS::get_os() {
+                    None => {}
+                    Some(os) => {
+                        match os {
+                            OS::WINDOWS => {
+                                println!("正在为你打开Windows第一IDE！");
+                                match std::process::Command::new("notepad").arg(self.command[4..].to_string()).output() {
+                                    Ok(_) => {println!("没错！这就是Windows 第一IDE！")}
+                                    Err(_) => {println!("无法打开IDE！")}
+                                }
+                            }
+                            OS::LINUX => {
+                                println!("正在为你打开Linux第一IDE！");
+                                match std::process::Command::new("gedit").arg(self.command[4..].to_string()).output() {
+                                    Ok(_) => {println!("没错！这就是Linux第一IDE！")}
+                                    Err(_) => {println!("无法打开IDE 提示:sudo apt install gedit或sudo dnf install gedit或sudo pacman -S gedit")}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
