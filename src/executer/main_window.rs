@@ -65,7 +65,7 @@ pub fn show_main_window() {
     grid.attach(&btn_close, 0, 4, 1, 1);
     grid.attach(&btn_ide, 0, 5, 1, 1);
     grid.attach(&*input_file.borrow(), 0, 6, 1, 1);
-    grid.attach(&btn_run_script,0,7,1,1);
+    grid.attach(&btn_run_script, 0, 7, 1, 1);
 
     app.connect_activate(move |app| {
         let window = ApplicationWindow::builder()

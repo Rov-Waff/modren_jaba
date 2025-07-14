@@ -155,6 +155,22 @@ impl Executer {
                     }
                 },
             },
+            COMMANDS::EGG_1 => {
+                print!(
+                    "
+       　  　▃▆█▇▄▖
+　 　 　 ▟◤▖　　　◥█▎
+   　 ◢◤　 ▐　　　 　▐▉
+　 ▗◤　　　▂　▗▖　　▕ █▎
+　◤　▗▅▖◥▄　  ▀◣　 █▊
+▐　▕▎◥▖◣◤　　　　◢██
+█◣　◥▅█▀　　　　▐██◤
+▐█▙▂　　     　◢██◤
+◥██◣　　　◢▄◤
+ 　　▀██▅▇▀
+"
+                )
+            }
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
