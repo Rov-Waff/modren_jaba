@@ -12,7 +12,7 @@ pub enum COMMANDS {
     ONUI,
     RUN,
     IDE,
-    IdeOpensFile
+    IdeOpensFile,
 }
 
 impl COMMANDS {
@@ -28,7 +28,7 @@ impl COMMANDS {
             COMMANDS::ONUI => Regex::new(r"^OnUI$").expect("Err!"),
             COMMANDS::RUN => Regex::new(r"^run\?").expect("Err!"),
             COMMANDS::IDE => Regex::new(r"^IDE$").expect("Err!"),
-            COMMANDS::IdeOpensFile => Regex::new(r"^IDE\?").expect("Err!")
+            COMMANDS::IdeOpensFile => Regex::new(r"^IDE\?").expect("Err!"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -52,10 +52,9 @@ impl COMMANDS {
             Some(COMMANDS::RUN)
         } else if COMMANDS::get_regex(COMMANDS::IDE).is_match(command) {
             Some(COMMANDS::IDE)
-        } else if COMMANDS::get_regex(COMMANDS::IdeOpensFile).is_match(command){
+        } else if COMMANDS::get_regex(COMMANDS::IdeOpensFile).is_match(command) {
             Some(COMMANDS::IdeOpensFile)
-        }
-        else {
+        } else {
             None
         }
     }

@@ -3,6 +3,7 @@ use chrono::Local;
 use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use crate::ide_os::OS;
 
 mod info_window;
 mod main_window;
@@ -77,7 +78,10 @@ impl Executer {
                         Ok(_line) => {
                             let command_type = match COMMANDS::new(&_line.to_string()) {
                                 Some(_l) => _l,
-                                None => {println!("指令:{} 有误！",_line);break },
+                                None => {
+                                    println!("指令:{} 有误！", _line);
+                                    break;
+                                }
                             };
                             Executer::new(command_type, &_line).exec()
                         }
@@ -85,6 +89,30 @@ impl Executer {
                     }
                 }
             }
+            COMMANDS::IDE => {
+                match crate::ide_os::OS::get_os() {
+                    None => {println!("还没有适配这个系统！")}
+                    Some(os) => {
+                        match os {
+                            OS::WINDOWS => {
+                                println!("正在为你打开Windows第一IDE！");
+                                match std::process::Command::new("notepad").output() {
+                                    Ok(_) => {println!("没错！这就是Windows 第一IDE！")}
+                                    Err(_) => {println!("无法打开IDE！")}
+                                }
+                            }
+                            OS::LINUX => {
+                                println!("正在为你打开Linux第一IDE！");
+                                match std::process::Command::new("gedit").output() {
+                                    Ok(_) => {println!("没错！这就是Linux第一IDE！")}
+                                    Err(_) => {println!("无法打开IDE 提示:sudo apt install gedit或sudo dnf install gedit或sudo pacman -S gedit")}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            COMMANDS::IdeOpensFile => {}
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
