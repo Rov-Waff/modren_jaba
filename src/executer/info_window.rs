@@ -1,7 +1,7 @@
-use gtk4::{Application, ApplicationWindow};
 use gtk4::prelude::{ApplicationExt, ApplicationExtManual, GtkWindowExt};
+use gtk4::{Application, ApplicationWindow};
 
-pub fn show_info_window(command:&String){
+pub fn show_info_window(command: &String) {
     let app = Application::builder()
         .application_id("modrenjaba.mb")
         .build();

@@ -1,10 +1,10 @@
-use gtk4::prelude::ApplicationExt;
-use gtk4::{Application, ApplicationWindow, Grid, Image};
-use gtk4::prelude::{ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
 use crate::command::COMMANDS;
 use crate::executer::{Executer, VERSION};
+use gtk4::prelude::ApplicationExt;
+use gtk4::prelude::{ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
+use gtk4::{Application, ApplicationWindow, Grid, Image};
 
-pub fn show_main_window(){
+pub fn show_main_window() {
     match gtk4::init() {
         Ok(..) => {
             println!("Successfully");
