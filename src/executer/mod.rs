@@ -60,6 +60,7 @@ impl Executer {
             COMMANDS::ONUI => {
                 main_window::show_main_window();
             }
+            COMMANDS::RUN => {}
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
