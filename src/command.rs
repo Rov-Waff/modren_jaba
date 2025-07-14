@@ -13,7 +13,7 @@ pub enum COMMANDS {
     RUN,
     IDE,
     IdeOpensFile,
-    EGG_1,
+    Egg1,
 }
 
 impl COMMANDS {
@@ -30,7 +30,7 @@ impl COMMANDS {
             COMMANDS::RUN => Regex::new(r"^run\?").expect("Err!"),
             COMMANDS::IDE => Regex::new(r"^IDE$").expect("Err!"),
             COMMANDS::IdeOpensFile => Regex::new(r"^IDE\?").expect("Err!"),
-            COMMANDS::EGG_1 => Regex::new(r"^114514$").expect("ERR"),
+            COMMANDS::Egg1 => Regex::new(r"^114514$").expect("ERR"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -56,8 +56,8 @@ impl COMMANDS {
             Some(COMMANDS::IDE)
         } else if COMMANDS::get_regex(COMMANDS::IdeOpensFile).is_match(command) {
             Some(COMMANDS::IdeOpensFile)
-        } else if COMMANDS::get_regex(COMMANDS::EGG_1).is_match(command) {
-            Some(COMMANDS::EGG_1)
+        } else if COMMANDS::get_regex(COMMANDS::Egg1).is_match(command) {
+            Some(COMMANDS::Egg1)
         } else {
             None
         }

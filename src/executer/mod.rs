@@ -1,7 +1,6 @@
 use crate::command::COMMANDS;
 use crate::ide_os::OS;
 use chrono::Local;
-use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
@@ -64,7 +63,7 @@ impl Executer {
                 main_window::show_main_window();
             }
             COMMANDS::RUN => {
-                let mut file;
+                let file;
                 match File::open(self.command[4..].to_string()) {
                     Ok(_file) => file = _file,
                     Err(_) => {
@@ -89,7 +88,7 @@ impl Executer {
                     }
                 }
             }
-            COMMANDS::IDE => match crate::ide_os::OS::get_os() {
+            COMMANDS::IDE => match OS::get_os() {
                 None => {
                     println!("还没有适配这个系统！")
                 }
@@ -155,7 +154,7 @@ impl Executer {
                     }
                 },
             },
-            COMMANDS::EGG_1 => {
+            COMMANDS::Egg1 => {
                 print!(
                     "
        　  　▃▆█▇▄▖
