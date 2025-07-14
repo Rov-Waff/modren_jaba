@@ -10,7 +10,7 @@ pub enum COMMANDS {
     HELP,
     INFO,
     ONUI,
-    RUN
+    RUN,
 }
 
 impl COMMANDS {
@@ -24,7 +24,7 @@ impl COMMANDS {
             COMMANDS::HELP => Regex::new(r"^help$").expect("Err!"),
             COMMANDS::INFO => Regex::new(r"^info\?").expect("Err!"),
             COMMANDS::ONUI => Regex::new(r"^OnUI$").expect("Err!"),
-            COMMANDS::RUN =>Regex::new(r"^run\?").expect("Err"),
+            COMMANDS::RUN => Regex::new(r"^run\?").expect("Err"),
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -44,11 +44,9 @@ impl COMMANDS {
             Some(COMMANDS::INFO)
         } else if COMMANDS::get_regex(COMMANDS::ONUI).is_match(&command) {
             Some(COMMANDS::ONUI)
-        } 
-        else if COMMANDS::get_regex(COMMANDS::RUN).is_match(command) { 
+        } else if COMMANDS::get_regex(COMMANDS::RUN).is_match(command) {
             Some(COMMANDS::RUN)
-        }
-        else {
+        } else {
             None
         }
     }

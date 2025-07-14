@@ -1,6 +1,8 @@
 use crate::command::COMMANDS;
 use chrono::Local;
 use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ButtonExt, GridExt, GtkWindowExt};
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 mod info_window;
 mod main_window;
@@ -60,7 +62,29 @@ impl Executer {
             COMMANDS::ONUI => {
                 main_window::show_main_window();
             }
-            COMMANDS::RUN => {}
+            COMMANDS::RUN => {
+                let mut file;
+                match File::open(self.command[4..].to_string()) {
+                    Ok(_file) => file = _file,
+                    Err(_) => {
+                        println!("该URL无法访问");
+                        return;
+                    }
+                }
+                let reader = BufReader::new(file);
+                for _command_line in reader.lines() {
+                    match _command_line {
+                        Ok(_line) => {
+                            let command_type = match COMMANDS::new(&_line.to_string()) {
+                                Some(_l) => _l,
+                                None => {println!("指令:{} 有误！",_line);break },
+                            };
+                            Executer::new(command_type, &_line).exec()
+                        }
+                        Err(_) => {}
+                    }
+                }
+            }
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
