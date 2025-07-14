@@ -1,8 +1,9 @@
 [package]
 name = "modren_jaba"
-version = "1.0.4"
+version = "1.0.5"
 edition = "2024"
 license = "MIT"
+authors = ["Reiz","xiaole233/Rov-Waff"]
 
 [dependencies]
 chrono = "0.4.41" #哇当时真的写成Cirno了

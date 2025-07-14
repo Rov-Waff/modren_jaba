@@ -717,7 +717,7 @@ dependencies = [
 
 [[package]]
 name = "modren_jaba"
-version = "1.0.4"
+version = "1.0.5"
 dependencies = [
  "chrono",
  "fmt",
