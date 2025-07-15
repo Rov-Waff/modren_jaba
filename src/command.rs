@@ -14,6 +14,7 @@ pub enum COMMANDS {
     IDE,
     IdeOpensFile,
     Egg1,
+    HOMO
 }
 
 impl COMMANDS {
@@ -31,6 +32,7 @@ impl COMMANDS {
             COMMANDS::IDE => Regex::new(r"^IDE$").expect("Err!"),
             COMMANDS::IdeOpensFile => Regex::new(r"^IDE\?").expect("Err!"),
             COMMANDS::Egg1 => Regex::new(r"^114514$").expect("ERR"),
+            COMMANDS::HOMO => Regex::new(r"^homo\?").expect("Err!")
         }
     }
     pub fn new(command: &String) -> Option<COMMANDS> {
@@ -58,7 +60,10 @@ impl COMMANDS {
             Some(COMMANDS::IdeOpensFile)
         } else if COMMANDS::get_regex(COMMANDS::Egg1).is_match(command) {
             Some(COMMANDS::Egg1)
-        } else {
+        } else if COMMANDS::get_regex(COMMANDS::HOMO).is_match(command) {
+            Some(COMMANDS::HOMO)
+        }
+        else {
             None
         }
     }

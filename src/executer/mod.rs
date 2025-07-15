@@ -170,6 +170,12 @@ impl Executer {
 "
                 )
             }
+            COMMANDS::HOMO => {
+                println!("{}",match homo::roar(&self.command[5..]){
+                    Ok(res)=>res,
+                    Err(_)=> "接受一个整数".parse().unwrap()
+                });
+            }
         }
     }
     pub fn new(_command_type: COMMANDS, _command: &String) -> Executer {
