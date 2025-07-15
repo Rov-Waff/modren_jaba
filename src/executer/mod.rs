@@ -171,10 +171,13 @@ impl Executer {
                 )
             }
             COMMANDS::HOMO => {
-                println!("{}",match homo::roar(&self.command[5..]){
-                    Ok(res)=>res,
-                    Err(_)=> "接受一个整数".parse().unwrap()
-                });
+                println!(
+                    "{}",
+                    match homo::roar(&self.command[5..]) {
+                        Ok(res) => res,
+                        Err(_) => "接受一个整数".parse().unwrap(),
+                    }
+                );
             }
         }
     }
