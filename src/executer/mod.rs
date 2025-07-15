@@ -173,10 +173,8 @@ impl Executer {
             COMMANDS::HOMO => {
                 println!(
                     "{}",
-                    match homo::roar(&self.command[5..]) {
-                        Ok(res) => res,
-                        Err(_) => "接受一个整数".parse().unwrap(),
-                    }
+                    homo::roar(&self.command[5..])
+                        .unwrap_or_else(|_| "接受一个整数".parse().unwrap())
                 );
             }
         }
